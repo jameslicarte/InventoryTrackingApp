@@ -25,10 +25,14 @@ class GroupViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 #views for product
-class ProductViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
+class ProductViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows product to be viewed
     """
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+    # def get_queryset(self):
+    #   return self.queryset.filter(brand=self.request.user).order_by('-brand')
+
