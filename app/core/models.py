@@ -13,3 +13,6 @@ class Product(models.Model):
     description = models.TextField(default=None)
     date_added = models.DateTimeField(default=None)
     stock = models.IntegerField(default=None)
+
+    def __str__(self):
+        return self.brand
