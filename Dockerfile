@@ -17,5 +17,3 @@ COPY ./app/ /app
 
 RUN adduser -D user
 USER user
-
-RUN npm run serve
