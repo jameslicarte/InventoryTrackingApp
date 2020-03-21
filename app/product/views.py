@@ -31,7 +31,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     """
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
 
     # def get_queryset(self):
     #   return self.queryset.filter(brand=self.request.user).order_by('-brand')
