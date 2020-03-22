@@ -1,16 +1,19 @@
 <template>
   <div id="app">
-    <ListProducts msg="Welcome to Your Vue.js App"/>
+    <ListProducts/>
+    <AddProductType/>
   </div>
 </template>
 
 <script>
 import ListProducts from './components/ListProducts.vue'
+import AddProductType from './components/AddProductType.vue'
 
 export default {
   name: 'App',
   components: {
-    ListProducts
+    ListProducts,
+    AddProductType
   },
   data() {
     return {
