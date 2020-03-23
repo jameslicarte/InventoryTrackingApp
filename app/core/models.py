@@ -15,6 +15,7 @@ class Product(models.Model):
     def __str__(self):
         return self.product_name
 
+
 class ProductType(models.Model):
     prodType = models.CharField(max_length=255)
     field1_name = models.CharField(max_length=255) 

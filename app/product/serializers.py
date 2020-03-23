@@ -24,7 +24,13 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
+
+    sku = serializers.SerializerMethodField()
+    
     class Meta:
         model = Product
-        fields = ['id', 'prodType', 'product_name', 'field1', 'field2', 'field3']
+        fields = ['id', 'prodType', 'product_name', 'field1', 'field2', 'field3', 'sku']
         read_only_fields = ('id',)
+
+    def get_sku(self, Product):
+        return '{} {}'.format(Product.prodType, Product.product_name)
