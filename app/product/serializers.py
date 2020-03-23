@@ -33,4 +33,18 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
         read_only_fields = ('id',)
 
     def get_sku(self, Product):
-        return '{} {}'.format(Product.prodType, Product.product_name)
+        fields = ""
+        if(Product.id != ''):
+            fields += str(Product.id).replace(" ","") + '/'
+        if(Product.prodType != ''):
+            fields += Product.prodType.replace(" ","") + '/'
+        if(Product.product_name != ''):
+            fields += Product.product_name.replace(" ","") + '/'
+        if(Product.field1 != ''):
+            fields += Product.field1.replace(" ","") + '/'
+        if(Product.field2 != ''):
+            fields += Product.field2.replace(" ","") + '/'
+        if(Product.field3 != ''):
+            fields += Product.field3.replace(" ","") + '/'
+        
+        return fields
