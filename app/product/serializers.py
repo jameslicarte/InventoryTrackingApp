@@ -26,5 +26,5 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Product
-        fields = ['id', 'brand', 'prodType', 'color', 'size']
+        fields = ['id', 'prodType', 'product_name', 'field1', 'field2', 'field3']
         read_only_fields = ('id',)

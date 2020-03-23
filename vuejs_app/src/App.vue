@@ -7,13 +7,11 @@
 
 <script>
 import ListProducts from './components/ListProducts.vue'
-import AddProductType from './components/AddProductType.vue'
 
 export default {
   name: 'App',
   components: {
-    ListProducts,
-    AddProductType
+    ListProducts
   },
   data() {
     return {
