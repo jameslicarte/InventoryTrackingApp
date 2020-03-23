@@ -12,6 +12,7 @@
           <td>{{product.field1}}</td>
           <td>{{product.field2}}</td>
           <td>{{product.field3}}</td>
+          <td>{{product.id + ' ' + product.prodTypt}}</td>
         </tr>
       </div>
     </table>
@@ -40,6 +41,7 @@ export default {
     this.getProducts()
   }
 }
+
 </script>
 
 <style scoped>
