@@ -30,6 +30,9 @@
               <label for="field3">Field3 </label>
               <input class="ml-2" type="text" name="field3" id="field3" v-model="field3">
             </p>
+            <p>
+              <input class="ml-2" type="text" name="field3" id="field3" v-model="field3">
+            </p>
           </form>
         </div>
       </div>
@@ -48,7 +51,7 @@ export default {
     }
   },
   methods: {
-    postProducts() {
+    addProducts() {
       axios.post("http://127.0.0.1:8000/api/products/")
       .then(res => (this.products = res.data))
       .catch(err => console.log(err));

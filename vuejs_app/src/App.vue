@@ -1,24 +1,22 @@
 <template>
-  <div id="app">
-    <ListProducts/>
-    <CreateProducts/>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h2>
+          <router-link to="/index">Products</router-link>
+        </h2>
+        <router-link to="/create" class="btn btn-sm btn-primary">Add Product</router-link>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import ListProducts from './components/ListProducts.vue'
-import CreateProducts from './components/CreateProducts.vue'
+// import ListProducts from './components/ListProducts.vue'
+// import CreateProducts from './components/CreateProducts.vue'
 export default {
   name: 'App',
   components: {
-    ListProducts,
-    CreateProducts
-  },
-  data() {
-    return {
-
-    }
-    
   }
 }
 </script>
