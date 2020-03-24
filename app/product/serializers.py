@@ -23,7 +23,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['url', 'name']
 
 
-class ProductSerializer(serializers.HyperlinkedModelSerializer):
+class ProductSerializer(serializers.ModelSerializer):
 
     sku = serializers.SerializerMethodField()
     
@@ -48,3 +48,5 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
             fields += Product.field3.replace(" ","") + '/'
         
         return fields
+
+

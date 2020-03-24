@@ -7,6 +7,7 @@ router = routers.DefaultRouter()
 router.register(r'api/users', views.UserViewSet)
 router.register(r'api/groups', views.GroupViewSet)
 router.register(r'api/products', views.ProductViewSet)
+router.register(r'api/products/<int:pk>', views.ProductViewSet)
 
 from django.contrib import admin
 from django.urls import path
