@@ -1,21 +1,22 @@
 <template>
   <div id="app">
     <ListProducts/>
-    <AddProductType/>
+    <CreateProducts/>
   </div>
 </template>
 
 <script>
 import ListProducts from './components/ListProducts.vue'
-
+import CreateProducts from './components/CreateProducts.vue'
 export default {
   name: 'App',
   components: {
-    ListProducts
+    ListProducts,
+    CreateProducts
   },
   data() {
     return {
-      msg: ""
+
     }
     
   }

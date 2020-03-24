@@ -1,8 +1,6 @@
 <template>
   <div>
     <h1> Products </h1>  
-    <button v-on:click="getProducts">Get Products</button>
-    <b-table striped hover :items="items"></b-table>
     <table>
       <div v-bind:key="product.id" v-for="product in products">
         <tr>
@@ -13,6 +11,7 @@
           <td>{{product.field2}}</td>
           <td>{{product.field3}}</td>
           <td>{{product.sku}}</td>
+          
         </tr>
       </div>
     </table>
