@@ -3,14 +3,14 @@
     <div class="col-md-6">
       <div class="card">
         <div class="card-body">
-          <form id="formProduct">
+          <form id="formProduct" @submit.prevent="checkForm">
             <p>
               <label for="prodType">Product Type: </label>
-              <select class="ml-2"  name="prodType" id="prodType">
-                <option value="KEY">--Select--</option>
-                <option value="KEY">T-Shirt</option>
-                <option value="KEY">Shoe</option>
-                <option value="KEY">Car</option>
+              <select class="ml-2" name="prodType" id="prodType" v-model="prodType">
+                <option>--Select--</option>
+                <option>T-Shirt</option>
+                <option>Shoe</option>
+                <option>Car</option>
 
               </select>
             </p>
@@ -31,7 +31,7 @@
               <input class="ml-2" type="text" name="field3" id="field3" v-model="field3">
             </p>
             <p>
-              <input class="ml-2" type="text" name="field3" id="field3" v-model="field3">
+              <input class="ml-2" type="submit" value="Submit">
             </p>
           </form>
         </div>
@@ -47,14 +47,26 @@ export default {
   name: "CreateProduct",
   data() {
     return {
-      products: []
+
     }
   },
   methods: {
-    addProducts() {
-      axios.post("http://127.0.0.1:8000/api/products/")
-      .then(res => (this.products = res.data))
-      .catch(err => console.log(err));
+    checkForm() {
+      // console.log(this.prodType)
+      // console.log(this.product_name)
+      axios.post("http://127.0.0.1:8000/api/products/",{
+        prodType: this.prodType,
+        product_name: this.product_name,
+        field1: this.field1,
+        field2: this.field2,
+        field3: this.field3
+      },{
+        headers: {
+            'Content-Type': 'application/json'
+        }
+      })
+      .then(res => console.log(res.data))
+      .catch(res => console.log(res.data))
     }
   },
   created() {
