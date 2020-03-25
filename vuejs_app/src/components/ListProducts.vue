@@ -1,20 +1,5 @@
 <template>
   <div>
-    <h1> Products </h1>  
-    <!-- <table>
-      <div v-bind:key="product.id" v-for="product in products">
-        <tr>
-          <td> {{product.id}}</td>
-          <td> {{product.prodType}}</td>
-          <td> {{product.product_name}}</td>
-          <td>{{product.field1}}</td>
-          <td>{{product.field2}}</td>
-          <td>{{product.field3}}</td>
-          <td>{{product.sku}}</td>
-          <td>{{product.stock}}</td>
-        </tr>
-      </div>
-    </table> -->
     <table class="table table-hover">
       <thead>
         <tr >
@@ -32,6 +17,10 @@
           <td>{{product.field3}}</td>
           <td>{{product.sku}}</td>
           <td>{{product.stock}}</td>
+          <td>
+            <b-button variant="primary" v-on:click="promptAmount(); putProduct(product);">Receive</b-button>
+            <b-button variant="primary" style="margin-left: 10px;">Send</b-button>
+          </td>
         </tr>
 
       </tbody>
@@ -57,15 +46,39 @@ export default {
         {id:'6', field: 'SKU'},
         {id:'7', field: 'Stock'},
         {id:'8', field: 'Action'},
-      ]
+      ],
+      putProduct_data: [],
     }
   },
   methods: {
     getProducts() {
       axios.get("http://127.0.0.1:8000/api/products/")
-      .then(res => (this.products = res.data, console.log(this.products), console.log(this.items)))
+      .then(res => (this.products = res.data))
       .catch(err => console.log(err));
-    }
+    },
+    putProduct(product) {
+      axios.patch("http://127.0.0.1:8000/api/products/"+product.id+"/", {
+          stock: this.putProduct_data.amount,
+        },{
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(function (response) {
+          console.log(response, this.putProduct_data.amount);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      
+    },
+    promptAmount() {
+      var amount = parseInt(prompt("Please enter amount to receive", 0));
+      if (amount != null) {
+        this.putProduct_data.amount = amount;
+        console.log(amount);
+      }
+    },
   },
   created() {
     this.getProducts()
