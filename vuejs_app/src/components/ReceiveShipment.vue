@@ -3,6 +3,7 @@
     <div class="col-md-6">
       <div class="card">
         <div class="card-body">
+          <h5 class="card-title">Receive Shipment</h5>
           <form id="formProduct" @submit.prevent="checkForm">
             <p>
               <label for="prodType">Product Type: </label>
@@ -44,9 +45,14 @@
 import axios from 'axios';
 
 export default {
-  name: "CreateProduct",
+  name: "shipment",
   data() {
     return {
+      prodType: "",
+      product_name: "",
+      field1: "",
+      field2: "",
+      field3: ""
 
     }
   },
@@ -65,8 +71,11 @@ export default {
             'Content-Type': 'application/json'
         }
       })
-      .then(res => console.log(res.data))
+      .then(res => console.log(res), this.$forceUpdate())
       .catch(res => console.log(res.data))
+    },
+    deleteData() {
+
     }
   },
   created() {

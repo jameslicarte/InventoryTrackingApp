@@ -1,18 +1,14 @@
 <template>
   <div id="app">
-    <ListProducts/>
-    <CreateProducts/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import ListProducts from './components/ListProducts.vue'
-import CreateProducts from './components/CreateProducts.vue'
 export default {
   name: 'App',
   components: {
-    ListProducts,
-    CreateProducts
+
   }
 }
 </script>
