@@ -29,7 +29,7 @@ class ProductSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Product
-        fields = ['id', 'prodType', 'product_name', 'field1', 'field2', 'field3', 'sku']
+        fields = ['id', 'prodType', 'product_name', 'field1', 'field2', 'field3', 'sku', 'stock']
         read_only_fields = ('id',)
 
     def get_sku(self, Product):

@@ -21,3 +21,4 @@ class ProductType(models.Model):
     field1_name = models.CharField(max_length=255) 
     field2_name = models.CharField(max_length=255) 
     field3_name = models.CharField(max_length=255) 
+

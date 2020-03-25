@@ -71,11 +71,8 @@ export default {
             'Content-Type': 'application/json'
         }
       })
-      .then(res => console.log(res), this.$forceUpdate())
+      .then(res => console.log(res))
       .catch(res => console.log(res.data))
-    },
-    deleteData() {
-
     }
   },
   created() {
