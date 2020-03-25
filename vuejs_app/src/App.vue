@@ -1,8 +1,16 @@
 <template>
   <div id="app">
-    <h1><router-link to="/">Home</router-link></h1>
-    <h1><router-link to="/ship">Ship Products</router-link></h1>
-    <h1><router-link to="/receive">Receive Shipment</router-link></h1>
+    <b-nav tabs align="center">
+      <b-nav-item>
+        <router-link tag="li" to="/">Home</router-link>
+      </b-nav-item>
+      <b-nav-item>
+        <router-link tag="li" to="/ship">Ship Products</router-link>
+      </b-nav-item>
+      <b-nav-item>
+        <router-link tag="li" to="/receive">Receive Shipment</router-link>
+      </b-nav-item>
+    </b-nav>
     <router-view></router-view>
   </div>
 </template>
