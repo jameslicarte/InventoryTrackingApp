@@ -27,12 +27,12 @@ const router = new VueRouter({
       component: () => import("./components/ReceiveShipment.vue")
     },
     {
-      path: "/create",
+      path: "/create/prodtype",
       component: () => import("./components/CreateProductType.vue")
     },
     {
-      path: "/ship",
-      component: () => import("./components/ShipProduct.vue")
+      path: "/reports",
+      component: () => import("./components/Reports.vue")
     },
   ],
   mode: 'history'

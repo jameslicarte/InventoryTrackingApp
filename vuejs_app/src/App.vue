@@ -2,13 +2,13 @@
   <div id="app">
     <b-nav tabs align="center">
       <b-nav-item>
-        <router-link tag="li" to="/">Home</router-link>
+        <router-link tag="li" to="/">Products</router-link>
       </b-nav-item>
       <b-nav-item>
-        <router-link tag="li" to="/ship">Ship Products</router-link>
+        <router-link tag="li" to="/create/prodtype">Product Type</router-link>
       </b-nav-item>
       <b-nav-item>
-        <router-link tag="li" to="/receive">Receive Shipment</router-link>
+        <router-link tag="li" to="/reports">Reports</router-link>
       </b-nav-item>
     </b-nav>
     <router-view></router-view>

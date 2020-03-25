@@ -3,7 +3,7 @@
     <div class="col-md-6">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Receive Shipment</h5>
+          <h5 class="card-title">CreAAAAA Type</h5>
           <form id="formProduct" @submit.prevent="checkForm">
             <p>
               <label for="prodType">Product Type: </label>
@@ -45,7 +45,7 @@
 import axios from 'axios';
 
 export default {
-  name: "shipment",
+  name: "createProdType",
   data() {
     return {
       prodType: "",
