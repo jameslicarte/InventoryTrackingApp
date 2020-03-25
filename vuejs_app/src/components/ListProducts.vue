@@ -20,6 +20,7 @@
           <td>
             <b-button variant="primary" v-on:click="promptAmount_receive(); putProduct_receive(product);">Receive</b-button>
             <b-button variant="primary" v-on:click="promptAmount_send(); putProduct_ship(product);" style="margin-left: 10px;" >Send</b-button>
+            <b-button variant="danger" v-on:click="prompt_delete(); deleteProduct(product);" style="margin-left: 10px;" >Delete</b-button>
           </td>
         </tr>
 
@@ -75,7 +76,7 @@ export default {
     putProduct_ship(product) {
       // Check first if product.stock > amount to send
       if(product.stock < this.events_data.amount_ship){
-        console.log("ERROR! Stock cannot be less than 0");
+        alert("ERROR: Stock cannot be less than 0");
       }
       else{
         var total_amount = product.stock - this.events_data.amount_ship;
@@ -93,7 +94,29 @@ export default {
             console.log(error);
           }); 
       }
-
+    },
+    deleteProduct(product) {
+      // Check if del_button is true, check if stock is not less than 0
+      console.log(this.events_data.del_button)
+      if(this.events_data.del_button){
+        if(product.stock <= 0){
+          axios.delete("http://127.0.0.1:8000/api/products/"+product.id+"/", {},{
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            })
+            .then(function (response) {
+              console.log(response);
+            })
+            .catch(function (error) {
+              console.log(error);
+            }); 
+        }
+        else{
+          alert("ERROR: Product with stocks cannot be deleted");
+        }
+      }
+        
     },
     promptAmount_receive() {
       var amount = parseInt(prompt("Please enter amount to receive", 0));
@@ -108,6 +131,10 @@ export default {
         this.events_data.amount_ship = amount;
         console.log(amount);
       }
+    },
+    prompt_delete() {
+      var del_button = confirm("Are you sure you want to delete this product?");
+      this.events_data.del_button = del_button;
     },
   },
   created() {
