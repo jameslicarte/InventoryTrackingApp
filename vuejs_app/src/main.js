@@ -26,6 +26,14 @@ const router = new VueRouter({
       path: "/receive",
       component: () => import("./components/ReceiveShipment.vue")
     },
+    {
+      path: "/create",
+      component: () => import("./components/CreateProductType.vue")
+    },
+    {
+      path: "/ship",
+      component: () => import("./components/ShipProduct.vue")
+    },
   ],
   mode: 'history'
 });
