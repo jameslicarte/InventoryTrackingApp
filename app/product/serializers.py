@@ -29,8 +29,8 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
     
     class Meta:
         model = Product
-        fields = ['id', 'prodType', 'product_name', 'field1', 'field2', 'field3', 'sku', 'stock']
-        read_only_fields = ('id',)
+        fields = ['id', 'prodType', 'product_name', 'field1', 'field2', 'field3', 'sku', 'stock', 'updated_date']
+        read_only_fields = ('id','updated_date')
 
     def get_sku(self, Product):
         fields = ""
