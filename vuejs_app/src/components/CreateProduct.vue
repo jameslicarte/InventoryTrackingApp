@@ -12,7 +12,7 @@
                     <label for="prodType">Product Type: </label>
                     <select class="ml-2" name="prodType" id="prodType" @change="prodType_onChange($event)" v-model="prodType" >
                       <option selected="true" disabled="disabled">--Select--</option>  
-                      <option v-bind:key="prodType_field.id" v-for="prodType_field in prodType_fields" v-bind:value="prodType_field.id">{{prodType_field.prodType}}</option>
+                      <option v-bind:key="prodType_field.id" v-for="prodType_field in prodType_fields" v-bind:value="[prodType_field.id,prodType_field.prodType]">{{prodType_field.prodType}}</option>
                     </select>
                   </p>
                   <p>
@@ -44,8 +44,6 @@
         </b-col>
       </b-row>
     </b-container>
-
-    
   </div>  
 </template>
 
@@ -75,15 +73,14 @@ export default {
       field1_type: 'text',
       field2_type: 'text',
       field3_type: 'text',
-
     }
   },
   methods: {
     checkForm() {
-      // console.log(this.prodType)
+      console.log(this.prodType)
       // console.log(this.product_name)
       axios.post("http://127.0.0.1:8000/api/products/",{
-        prodType: this.prodType,
+        prodType: this.prodType[1],
         product_name: this.product_name,
         field1: this.field1,
         field2: this.field2,
@@ -103,11 +100,15 @@ export default {
     },
     getProdType_det(id) {
       axios.get("http://127.0.0.1:8000/api/producttypes/"+id+"/")
-      .then(res => (this.data = res.data, console.log(res.data), this.verify_fields()))
+      .then(res => (this.data = res.data, this.verify_fields()))
       .catch(err => console.log(err));
     },
     prodType_onChange(event) {
-      this.getProdType_det(event.target.value);
+      // events.target.value is an array
+      // [0] = prodType_field.id
+      // [1] = prodType_field.prodType
+      console.log(event.target.value)
+      this.getProdType_det(event.target.value[0]);
       
     },
     verify_fields() {
