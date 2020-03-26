@@ -25,11 +25,11 @@
                   </p>
                   <p>
                     <label for="field2">{{data.field2_name}} </label>
-                    <input class="ml-2" type="text" name="field2" id="field2" v-model="field2">
+                    <input class="ml-2" v-bind:type="field2_type" name="field2" id="field2" v-model="field2">
                   </p>
                   <p>
                     <label for="field3">{{data.field3_name}} </label>
-                    <input class="ml-2" v-bind:type="data.field3_type" name="field3" id="field3" v-model="field3">
+                    <input class="ml-2" v-bind:type="field3_type" name="field3" id="field3" v-model="field3">
                   </p>
                   <p>
                     <input class="ml-2" type="submit" value="Submit">
@@ -103,13 +103,27 @@ export default {
     },
     getProdType_det(id) {
       axios.get("http://127.0.0.1:8000/api/producttypes/"+id+"/")
-      .then(res => (this.data = res.data))
+      .then(res => (this.data = res.data, console.log(res.data), this.verify_fields()))
       .catch(err => console.log(err));
     },
     prodType_onChange(event) {
-      console.log((event.target.value));
       this.getProdType_det(event.target.value);
-      console.log(this.data);
+      
+    },
+    verify_fields() {
+      // verify fields if empty, if empty set fieldbox to hidden or disabled
+      if(this.data.field2_name==""){
+        this.field2_type="hidden";
+      }
+      else{
+        this.field2_type="text";
+      }
+      if(this.data.field3_name==""){
+        this.field3_type="hidden";
+      }
+      else{
+        this.field3_type="text";
+      }
     },
   },
   created() {
