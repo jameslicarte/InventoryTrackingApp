@@ -5,7 +5,10 @@
         <router-link tag="li" to="/">Products</router-link>
       </b-nav-item>
       <b-nav-item>
-        <router-link tag="li" to="/create/prodtype">Product Type</router-link>
+        <router-link tag="li" to="/create/product">Create Product</router-link>
+      </b-nav-item>
+      <b-nav-item>
+        <router-link tag="li" to="/create/prodtype">Create Product Type</router-link>
       </b-nav-item>
       <b-nav-item>
         <router-link tag="li" to="/reports">Reports</router-link>

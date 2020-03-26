@@ -20,11 +20,11 @@ const router = new VueRouter({
   routes: [
     {
       path: "/",
-      component: () => import("./components/ListProducts.vue")
+      component: () => import("./components/Products.vue")
     },
     {
-      path: "/receive",
-      component: () => import("./components/ReceiveShipment.vue")
+      path: "/create/product",
+      component: () => import("./components/CreateProduct.vue")
     },
     {
       path: "/create/prodtype",
