@@ -84,7 +84,7 @@ export default {
         product_name: this.product_name,
         field1: this.field1,
         field2: this.field2,
-        field3: this.field3
+        field3: this.field3,
       },{
         headers: {
             'Content-Type': 'application/json'

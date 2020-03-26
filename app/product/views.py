@@ -3,7 +3,8 @@ from rest_framework import viewsets, mixins
 from rest_framework import permissions
 from .serializers import UserSerializer, GroupSerializer, ProductSerializer, ProductTypeSerializer
 from rest_framework import generics
-
+from django_filters.rest_framework import OrderingFilter
+from rest_framework import filters
 from core.models import Product
 from core.models import ProductType
 
@@ -43,3 +44,13 @@ class ProductTypeViewSet(viewsets.ModelViewSet):
     queryset = ProductType.objects.all()
     serializer_class = ProductTypeSerializer
     permission_classes = [permissions.AllowAny]
+
+class ProductGenericView(generics.ListAPIView):
+    """
+    API endpoint that allows product to be viewed
+    """
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    permission_classes = [permissions.AllowAny]
+    filter_backends = [filters.OrderingFilter]
+    ordering_fields = ['updated_date','id']
