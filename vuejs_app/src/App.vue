@@ -11,7 +11,7 @@
         <router-link tag="li" to="/reports">Reports</router-link>
       </b-nav-item>
     </b-nav>
-    <router-view></router-view>
+    <router-view :key="$route.fullPath"></router-view>
   </div>
 </template>
 

@@ -19,6 +19,6 @@ class Product(models.Model):
 class ProductType(models.Model):
     prodType = models.CharField(max_length=255)
     field1_name = models.CharField(max_length=255) 
-    field2_name = models.CharField(max_length=255) 
-    field3_name = models.CharField(max_length=255) 
+    field2_name = models.CharField(max_length=255, blank=True) 
+    field3_name = models.CharField(max_length=255, blank=True) 
 

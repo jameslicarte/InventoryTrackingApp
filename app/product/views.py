@@ -1,11 +1,11 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets, mixins
 from rest_framework import permissions
-from .serializers import UserSerializer, GroupSerializer, ProductSerializer
+from .serializers import UserSerializer, GroupSerializer, ProductSerializer, ProductTypeSerializer
 from rest_framework import generics
 
 from core.models import Product
-
+from core.models import ProductType
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -33,4 +33,13 @@ class ProductViewSet(viewsets.ModelViewSet):
     """
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    permission_classes = [permissions.AllowAny]
+
+#views for productType
+class ProductTypeViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows product to be viewed
+    """
+    queryset = ProductType.objects.all()
+    serializer_class = ProductTypeSerializer
     permission_classes = [permissions.AllowAny]

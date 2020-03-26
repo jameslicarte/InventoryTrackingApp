@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from core.models import Product
+from core.models import Product, ProductType
 from rest_framework.authtoken.models import Token
 
 
@@ -48,5 +48,13 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
             fields += Product.field3.replace(" ","") + '/'
         
         return fields
+
+class ProductTypeSerializer(serializers.HyperlinkedModelSerializer):
+    
+    class Meta:
+        model = ProductType
+        fields = ['id', 'prodType', 'field1_name', 'field2_name', 'field3_name']
+        read_only_fields = ('id',)
+
 
 

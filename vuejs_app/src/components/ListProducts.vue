@@ -18,15 +18,13 @@
           <td>{{product.sku}}</td>
           <td>{{product.stock}}</td>
           <td>
-            <b-button variant="primary" v-on:click="promptAmount_receive(); putProduct_receive(product);">Receive</b-button>
-            <b-button variant="primary" v-on:click="promptAmount_send(); putProduct_ship(product);" style="margin-left: 10px;" >Send</b-button>
-            <b-button variant="danger" v-on:click="prompt_delete(); deleteProduct(product);" style="margin-left: 10px;" >Delete</b-button>
+            <b-button variant="primary" v-on:click="promptAmount_receive(); putProduct_receive(product); forceRefreshPage()">Receive</b-button>
+            <b-button variant="primary" v-on:click="promptAmount_send(); putProduct_ship(product); forceRefreshPage();" style="margin-left: 10px;" >Send</b-button>
+            <b-button variant="danger" v-on:click="prompt_delete(); deleteProduct(product); forceRefreshPage();" style="margin-left: 10px;">Delete</b-button>
           </td>
         </tr>
-
       </tbody>
     </table>
-    
   </div>  
 </template>
 
@@ -67,11 +65,13 @@ export default {
           }
         })
         .then(function (response) {
-          console.log(response, this.events_data.amount_receive);
+          console.log(response, this.events_data.amount_receive)
+          
         })
         .catch(function (error) {
           console.log(error);
         });
+        
     },
     putProduct_ship(product) {
       // Check first if product.stock > amount to send
@@ -136,6 +136,14 @@ export default {
       var del_button = confirm("Are you sure you want to delete this product?");
       this.events_data.del_button = del_button;
     },
+    forceRerender(){
+      // this.$forceUpdate();
+      
+    },
+    forceRefreshPage(){
+      //not recommended, find way to rerender just table instead
+      location.reload()
+    }
   },
   created() {
     this.getProducts()

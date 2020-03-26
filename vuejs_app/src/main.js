@@ -7,13 +7,13 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import * as VeeValidate from "vee-validate";
 import VueRouter from 'vue-router'
 
-// import HelloWorld from './components/HelloWorld.vue'
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(VeeValidate)
 Vue.use(PortalVue)
 Vue.use(VueRouter)
+
 Vue.config.productionTip = false
 
 const router = new VueRouter({
