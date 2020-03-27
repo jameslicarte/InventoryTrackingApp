@@ -48,12 +48,12 @@ export default {
         {id:'7', field: 'Stock', db_field: 'stock'},
         {id:'8', field: 'Action'},
       ],
-      events_data: [],
+      events_data: []
     }
   },
   methods: {
     getProducts() {
-      axios.get("http://127.0.0.1:8000/api/filtered-products/?ordering=-stock")
+      axios.get("/api/filtered-products/?ordering=-stock")
       .then(res => (this.products = res.data))
       .catch(err => console.log(err));
     },
@@ -84,7 +84,7 @@ export default {
         new_orderType = '-'
       }
 
-      axios.get("http://127.0.0.1:8000/api/filtered-products/?ordering="+this.events_data.old_orderType+new_dbfield)
+      axios.get("/api/filtered-products/?ordering="+this.events_data.old_orderType+new_dbfield)
       .then(res => (this.products = res.data))
       .catch(err => console.log(err));
       console.log("--------Seperator---------")
@@ -94,7 +94,7 @@ export default {
     },
     putProduct_receive(product) {
       var total_amount = product.stock + this.events_data.amount_receive;
-      axios.patch("http://127.0.0.1:8000/api/products/"+product.id+"/", {
+      axios.patch("/api/products/"+product.id+"/", {
           stock: total_amount,
         },{
           headers: {
@@ -117,7 +117,7 @@ export default {
       }
       else{
         var total_amount = product.stock - this.events_data.amount_ship;
-        axios.patch("http://127.0.0.1:8000/api/products/"+product.id+"/", {
+        axios.patch("/api/products/"+product.id+"/", {
             stock: total_amount,
           },{
             headers: {
@@ -136,7 +136,7 @@ export default {
       // Check if del_button is true, check if stock is not less than 0
       if(this.events_data.del_button){
         if(product.stock <= 0){
-          axios.delete("http://127.0.0.1:8000/api/products/"+product.id+"/", {},{
+          axios.delete("/api/products/"+product.id+"/", {},{
               headers: {
                 'Content-Type': 'application/json'
               }

@@ -8,11 +8,8 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./app:/app:Z
-    command: >
-      sh -c "python manage.py wait_for_db &&
-            python manage.py migrate &&
-            python manage.py runserver 0.0.0.0:8000"
+      - ./app:/app
+    command: sh -c "python manage.py wait_for_db && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     environment:
       - DB_HOST=db
       - DB_NAME=app
@@ -20,7 +17,10 @@ services:
       - DB_PASS=secretpassword
     depends_on:
       - db
-
+  node:
+    build: ./vuejs_app
+    ports:
+      - 80:8080
   db:
     image: postgres:12-alpine
     environment:
