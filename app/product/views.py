@@ -53,4 +53,4 @@ class ProductGenericView(generics.ListAPIView):
     serializer_class = ProductSerializer
     permission_classes = [permissions.AllowAny]
     filter_backends = [filters.OrderingFilter]
-    ordering_fields = ['updated_date','id']
+    ordering_fields = ['id','prodType','field1','field2','field3','stock']

@@ -3,8 +3,10 @@
     <table class="table table-hover">
       <thead>
         <tr >
-          <th v-bind:key="field.id" v-for="field in fields"> 
-            {{field.field}}
+          <th v-bind:key="field.id" v-for="field in fields" v-bind:value='field.db_field'> 
+            <b-button squared variant="outline-secondary" style="border-style: none;" v-on:click="getProducts_sort(field.db_field)">
+              {{field.field}}
+            </b-button>
           </th>
         </tr>
       </thead>
@@ -37,13 +39,13 @@ export default {
     return {
       products: [],
       fields: [
-        {id:'1', field: 'Type'},
-        {id:'2', field: 'Name'},
-        {id:'3', field: 'Field1'},
-        {id:'4', field: 'Field2'},
-        {id:'5', field: 'Field3'},
-        {id:'6', field: 'SKU'},
-        {id:'7', field: 'Stock'},
+        {id:'1', field: 'Type', db_field: 'prodType'},
+        {id:'2', field: 'Name', db_field: 'product_name'},
+        {id:'3', field: 'Field1', db_field: 'field1'},
+        {id:'4', field: 'Field2', db_field: 'field2'},
+        {id:'5', field: 'Field3', db_field: 'field3'},
+        {id:'6', field: 'SKU', db_field: 'sku'},
+        {id:'7', field: 'Stock', db_field: 'stock'},
         {id:'8', field: 'Action'},
       ],
       events_data: [],
@@ -51,13 +53,47 @@ export default {
   },
   methods: {
     getProducts() {
-      axios.get("http://127.0.0.1:8000/api/filtered-products/?ordering=-id")
+      axios.get("http://127.0.0.1:8000/api/filtered-products/?ordering=-stock")
       .then(res => (this.products = res.data))
       .catch(err => console.log(err));
     },
+    getProducts_sort(db_field) {
+      var new_dbfield = db_field;
+      var new_orderType = '';
+      //NOTE:
+      // '' = ascending
+      // '-' = descending
+      if(this.events_data.old_orderType == '-'){
+        //if this ordertype is descending
+        //assign next order type to be ascending
+        console.log("SORT BY DESC")
+        new_orderType = ''
+      }
+      else{
+        //if this ordertype is ascending
+        //assign next order type to be descending
+        console.log("SORT BY ASC")
+        new_orderType = '-'
+      }
+
+      if(new_dbfield != this.events_data.old_dbfield){
+        //if new column is clicked 
+        //override this ordertype to ascending
+        console.log("OVERIDE: New Column, SORT BY ASC")
+        this.events_data.old_orderType = ''
+        new_orderType = '-'
+      }
+
+      axios.get("http://127.0.0.1:8000/api/filtered-products/?ordering="+this.events_data.old_orderType+new_dbfield)
+      .then(res => (this.products = res.data))
+      .catch(err => console.log(err));
+      console.log("--------Seperator---------")
+
+      this.events_data.old_dbfield = db_field;
+      this.events_data.old_orderType = new_orderType;
+    },
     putProduct_receive(product) {
       var total_amount = product.stock + this.events_data.amount_receive;
-      console.log(new Date().toISOString());
       axios.patch("http://127.0.0.1:8000/api/products/"+product.id+"/", {
           stock: total_amount,
         },{
@@ -98,7 +134,6 @@ export default {
     },
     deleteProduct(product) {
       // Check if del_button is true, check if stock is not less than 0
-      console.log(this.events_data.del_button)
       if(this.events_data.del_button){
         if(product.stock <= 0){
           axios.delete("http://127.0.0.1:8000/api/products/"+product.id+"/", {},{
