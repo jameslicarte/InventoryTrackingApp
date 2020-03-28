@@ -20,25 +20,25 @@
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="product_name">Name/Brand </label>
                     <div class="col-sm-8">
-                    <input class="form-control" type="text" name="product_name" id="product_name" v-model="product_name">
+                      <input class="form-control" type="text" name="product_name" id="product_name" v-model="product_name">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="field1">{{data.field1_name}} </label>
                     <div class="col-sm-8">
-                    <input class="form-control" type="text" name="field1" id="field1" v-model="field1">
+                      <input class="form-control" type="text" name="field1" id="field1" v-model="field1">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="field2">{{data.field2_name}} </label>
                     <div class="col-sm-8">
-                    <input class="form-control" v-bind:type="field2_type" name="field2" id="field2" v-model="field2">
+                      <input class="form-control" v-bind:type="field2_type" name="field2" id="field2" v-model="field2">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="field3">{{data.field3_name}} </label>
                     <div class="col-sm-8">
-                    <input class="form-control" v-bind:type="field3_type" name="field3" id="field3" v-model="field3">
+                      <input class="form-control" v-bind:type="field3_type" name="field3" id="field3" v-model="field3">
                     </div>
                   </div>
                   <div class="form-group">
@@ -124,6 +124,7 @@ export default {
       // [1] = prodType_field.prodType
       console.log(event.target.value)
       this.getProdType_det(event.target.value[0]);
+      this.clearForm()
       
     },
     verify_fields() {
@@ -144,6 +145,12 @@ export default {
     forceUpdate(){
       this.componentKey += 1  
     },
+    clearForm(){
+      this.product_name = ''
+      this.field1 = ''
+      this.field2 = ''
+      this.field3 = ''
+    }
   },
   created() {
     this.getProdType();
