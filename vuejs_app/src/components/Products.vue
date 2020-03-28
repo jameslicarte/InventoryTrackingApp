@@ -21,7 +21,7 @@
           <td>{{product.stock}}</td>
           <td>
             <b-button variant="primary" v-on:click="promptAmount_receive(); putProduct_receive(product);">Receive</b-button>
-            <b-button variant="primary" v-on:click="promptAmount_send(); putProduct_ship(product);" style="margin-left: 10px;" >Send</b-button>
+            <b-button variant="primary" v-on:click="promptAmount_send(); putProduct_ship(product);" style="margin-left: 10px;" >Ship</b-button>
             <b-button variant="danger" v-on:click="prompt_delete(); deleteProduct(product);" style="margin-left: 10px;">Delete</b-button>
           </td>
         </tr>
