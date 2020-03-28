@@ -8,25 +8,33 @@
               <div class="card-body">
                 <h5 class="card-title">Create Product Type</h5>
                 <form id="formProduct" @submit.prevent="checkForm">
-                  <p>
-                    <label for="prodType">Product Type </label>
-                    <input class="ml-2" type="text" name="prodType" id="prodType" v-model="prodType">
-                  </p>
-                  <p>
-                    <label for="field1">Field1 Name </label>
-                    <input class="ml-2" type="text" name="field1" id="field1" v-model="field1">
-                  </p>
-                  <p>
-                    <label for="field2">Field2 Name</label>
-                    <input class="ml-2" type="text" name="field2" id="field2" v-model="field2">
-                  </p>
-                  <p>
-                    <label for="field3">Field3 Name</label>
-                    <input class="ml-2" type="text" name="field3" id="field3" v-model="field3">
-                  </p>
-                  <p>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="prodType">Product Type </label>
+                    <div class="col-sm-8">
+                      <input class="form-control" type="text" name="prodType" id="prodType" v-model="prodType">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="field1">Field1 Name </label>
+                    <div class="col-sm-8">
+                      <input class="form-control" type="text" name="field1" id="field1" v-model="field1">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="field2">Field2 Name</label>
+                    <div class="col-sm-8">
+                      <input class="form-control" type="text" name="field2" id="field2" v-model="field2">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="field3">Field3 Name</label>
+                    <div class="col-sm-8">
+                      <input class="form-control" type="text" name="field3" id="field3" v-model="field3">
+                    </div>
+                  </div>
+                  <div class="form-group row">
                     <input class="ml-2" type="submit" value="Submit">
-                  </p>
+                  </div>
                 </form>
               </div>
             </div>

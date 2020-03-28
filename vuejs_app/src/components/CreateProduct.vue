@@ -8,32 +8,42 @@
               <div class="card-body">
                 <h5 class="card-title">Create Product</h5>
                 <form id="formProduct" @submit.prevent="checkForm">
-                  <p>
-                    <label for="prodType">Product Type: </label>
-                    <select class="ml-2" name="prodType" id="prodType" @change="prodType_onChange($event)" v-model="prodType" >
-                      <option selected="true" disabled="disabled">--Select--</option>  
-                      <option v-bind:key="prodType_field.id" v-for="prodType_field in prodType_fields" v-bind:value="[prodType_field.id,prodType_field.prodType]">{{prodType_field.prodType}}</option>
-                    </select>
-                  </p>
-                  <p>
-                    <label for="product_name">Name </label>
-                    <input class="ml-2" type="text" name="product_name" id="product_name" v-model="product_name">
-                  </p>
-                  <p>
-                    <label for="field1">{{data.field1_name}} </label>
-                    <input class="ml-2" type="text" name="field1" id="field1" v-model="field1">
-                  </p>
-                  <p>
-                    <label for="field2">{{data.field2_name}} </label>
-                    <input class="ml-2" v-bind:type="field2_type" name="field2" id="field2" v-model="field2">
-                  </p>
-                  <p>
-                    <label for="field3">{{data.field3_name}} </label>
-                    <input class="ml-2" v-bind:type="field3_type" name="field3" id="field3" v-model="field3">
-                  </p>
-                  <p>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="prodType">Type: </label>
+                    <div class="col-sm-8">
+                      <select class="form-control" name="prodType" id="prodType" @change="prodType_onChange($event)" v-model="prodType" >
+                        <option selected="true" disabled="disabled">--Select--</option>  
+                        <option v-bind:key="prodType_field.id" v-for="prodType_field in prodType_fields" v-bind:value="[prodType_field.id,prodType_field.prodType]">{{prodType_field.prodType}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="product_name">Name/Brand </label>
+                    <div class="col-sm-8">
+                    <input class="form-control" type="text" name="product_name" id="product_name" v-model="product_name">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="field1">{{data.field1_name}} </label>
+                    <div class="col-sm-8">
+                    <input class="form-control" type="text" name="field1" id="field1" v-model="field1">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="field2">{{data.field2_name}} </label>
+                    <div class="col-sm-8">
+                    <input class="form-control" v-bind:type="field2_type" name="field2" id="field2" v-model="field2">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="field3">{{data.field3_name}} </label>
+                    <div class="col-sm-8">
+                    <input class="form-control" v-bind:type="field3_type" name="field3" id="field3" v-model="field3">
+                    </div>
+                  </div>
+                  <div class="form-group">
                     <input class="ml-2" type="submit" value="Submit">
-                  </p>
+                  </div>
                 </form>
               </div>
             </div>
