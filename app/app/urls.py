@@ -16,6 +16,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('api/filtered-products/', views.ProductGenericView.as_view(), name="test"),
+    path('api/filtered-products/', views.ProductGenericView.as_view(), name="product"),
+    path('api/filtered-producttypes/', views.ProductTypeGenericView.as_view(), name="producttypes"),
     path('products/', TemplateView.as_view(template_name='index.html')),
 ]

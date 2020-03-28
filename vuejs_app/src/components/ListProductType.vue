@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     getProducts() {
-      axios.get("http://127.0.0.1:8000/api/producttypes/")
+      axios.get("http://127.0.0.1:8000/api/filtered-producttypes/?ordering=-id")
       .then(res => (this.product_types = res.data))
       .catch(err => console.log(err));
     },

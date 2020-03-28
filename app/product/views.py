@@ -54,3 +54,13 @@ class ProductGenericView(generics.ListAPIView):
     permission_classes = [permissions.AllowAny]
     filter_backends = [filters.OrderingFilter]
     ordering_fields = ['id','prodType','field1','field2','field3','stock']
+
+class ProductTypeGenericView(generics.ListAPIView):
+    """
+    API endpoint that allows product to be viewed
+    """
+    queryset = ProductType.objects.all()
+    serializer_class = ProductTypeSerializer
+    permission_classes = [permissions.AllowAny]
+    filter_backends = [filters.OrderingFilter]
+    ordering_fields = ['id']

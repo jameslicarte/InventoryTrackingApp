@@ -7,17 +7,7 @@
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Create Product Type</h5>
-                <form id="formProduct" @submit="checkForm">
-                  <!-- <p>
-                    <label for="prodType">Product Type: </label>
-                    <select class="ml-2" name="prodType" id="prodType" v-model="prodType">
-                      <option>--Select--</option>
-                      <option>T-Shirt</option>
-                      <option>Shoe</option>
-                      <option>Car</option>
-
-                    </select>
-                  </p> -->
+                <form id="formProduct" @submit.prevent="checkForm">
                   <p>
                     <label for="prodType">Product Type </label>
                     <input class="ml-2" type="text" name="prodType" id="prodType" v-model="prodType">
@@ -43,7 +33,7 @@
           </div> 
         </b-col>
         <b-col>
-          <ListProductType :key="componentKey"></ListProductType>
+          <ListProductType :key="componentKey2"></ListProductType>
         </b-col>
       </b-row>
     </b-container>
@@ -63,7 +53,7 @@ export default {
   },
   data() {
     return {
-      componentKey: 0,
+      componentKey2: 0,
       prodType: "",
       field1: "",
       field2: "",
@@ -72,10 +62,6 @@ export default {
   },
   methods: {
     checkForm() {
-      console.log(this.prodType)
-      console.log(this.field1)
-      console.log(this.field2)
-      console.log(this.field3)
       // console.log(this.product_name)
       axios.post("http://127.0.0.1:8000/api/producttypes/",{
         prodType: this.prodType,
@@ -87,11 +73,14 @@ export default {
             'Content-Type': 'application/json'
         }
       })
-      .then(res => console.log(res), this.$forceUpdate)
+      .then(res => {
+        console.log(res)
+        this.forceUpdate()
+      })
       .catch(res => console.log(res.data))
     },
     forceUpdate(){
-      this.componentKey += 1  
+      this.componentKey2 += 1  
     },
   },
   created() {
