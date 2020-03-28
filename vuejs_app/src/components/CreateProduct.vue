@@ -40,7 +40,7 @@
           </div> 
         </b-col>
         <b-col>
-          <ListProduct></ListProduct>
+          <ListProduct :key="componentKey"></ListProduct>
         </b-col>
       </b-row>
     </b-container>
@@ -58,6 +58,7 @@ export default {
   },
   data() {
     return {
+      componentKey: 0,
       prodType: "",
       product_name: "",
       field1: "",
@@ -90,7 +91,11 @@ export default {
             'Content-Type': 'application/json'
         }
       })
-      .then(res => console.log(res))
+      .then(res => {
+        console.log(res)
+        this.componentKey += 1  
+
+      })
       .catch(res => console.log(res.data))
     },
     getProdType() {
