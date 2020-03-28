@@ -11,25 +11,25 @@
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="prodType">Product Type </label>
                     <div class="col-sm-8">
-                      <input class="form-control" type="text" name="prodType" id="prodType" v-model="prodType">
+                      <input class="form-control" type="text" name="prodType" id="prodType" v-model="prodType" placeholder="Ex: TShirt">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label" for="field1">Field1 Name </label>
+                    <label class="col-sm-3 col-form-label" for="field1" >Field1 Name </label>
                     <div class="col-sm-8">
-                      <input class="form-control" type="text" name="field1" id="field1" v-model="field1">
+                      <input class="form-control" type="text" name="field1" id="field1" v-model="field1" placeholder="Ex: Size">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label class="col-sm-3 col-form-label" for="field2">Field2 Name</label>
+                    <label class="col-sm-3 col-form-label" for="field2" >Field2 Name</label>
                     <div class="col-sm-8">
-                      <input class="form-control" type="text" name="field2" id="field2" v-model="field2">
+                      <input class="form-control" type="text" name="field2" id="field2" v-model="field2" placeholder="Ex: Color">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="field3">Field3 Name</label>
                     <div class="col-sm-8">
-                      <input class="form-control" type="text" name="field3" id="field3" v-model="field3">
+                      <input class="form-control" type="text" name="field3" id="field3" v-model="field3" placeholder="Ex: Style">>
                     </div>
                   </div>
                   <div class="form-group row">

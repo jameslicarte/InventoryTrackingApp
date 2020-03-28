@@ -11,7 +11,7 @@
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="prodType">Type: </label>
                     <div class="col-sm-8">
-                      <select class="form-control" name="prodType" id="prodType" @change="prodType_onChange($event)" v-model="prodType" >
+                      <select class="form-control" name="prodType" id="prodType" @change="prodType_onChange($event)" v-model="prodType">
                         <option selected="true" disabled="disabled">--Select--</option>  
                         <option v-bind:key="prodType_field.id" v-for="prodType_field in prodType_fields" v-bind:value="[prodType_field.id,prodType_field.prodType]">{{prodType_field.prodType}}</option>
                       </select>
