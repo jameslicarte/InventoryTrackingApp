@@ -1,6 +1,4 @@
 from django.db import models
-from datetime import datetime   
-
 
 
 class Product(models.Model):
@@ -20,7 +18,6 @@ class Product(models.Model):
 
 class ProductType(models.Model):
     prodType = models.CharField(max_length=255)
-    field1_name = models.CharField(max_length=255) 
-    field2_name = models.CharField(max_length=255, blank=True) 
-    field3_name = models.CharField(max_length=255, blank=True) 
-
+    field1_name = models.CharField(max_length=255)
+    field2_name = models.CharField(max_length=255, blank=True)
+    field3_name = models.CharField(max_length=255, blank=True)

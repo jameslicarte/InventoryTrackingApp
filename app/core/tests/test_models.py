@@ -28,8 +28,8 @@ class ModelTests(TestCase):
         self.assertEqual(product_obj.field3, field3)
         self.assertEqual(product_obj.stock, stock)
         
-    def test_create_new_product_successful(self):
-        """Test create new product is succesful"""
+    def test_create_new_product_type_successful(self):
+        """Test create new product type is succesful"""
         prodType = 'T-Shirt'
         field1_name = 'Color'
         field2_name = 'Type'

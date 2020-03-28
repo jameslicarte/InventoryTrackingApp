@@ -1,9 +1,8 @@
 from django.contrib.auth.models import User, Group
-from rest_framework import viewsets, mixins
+from rest_framework import viewsets
 from rest_framework import permissions
 from .serializers import UserSerializer, GroupSerializer, ProductSerializer, ProductTypeSerializer
 from rest_framework import generics
-from django_filters.rest_framework import OrderingFilter
 from rest_framework import filters
 from core.models import Product
 from core.models import ProductType
@@ -18,7 +17,6 @@ class UserViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     
 
-
 class GroupViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows groups to be viewed or edited.
@@ -27,7 +25,8 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-#views for product
+
+# views for product
 class ProductViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows product to be viewed
@@ -36,7 +35,8 @@ class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     permission_classes = [permissions.AllowAny]
 
-#views for productType
+
+# views for productType
 class ProductTypeViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows product to be viewed
@@ -44,6 +44,7 @@ class ProductTypeViewSet(viewsets.ModelViewSet):
     queryset = ProductType.objects.all()
     serializer_class = ProductTypeSerializer
     permission_classes = [permissions.AllowAny]
+
 
 class ProductGenericView(generics.ListAPIView):
     """
@@ -53,7 +54,8 @@ class ProductGenericView(generics.ListAPIView):
     serializer_class = ProductSerializer
     permission_classes = [permissions.AllowAny]
     filter_backends = [filters.OrderingFilter]
-    ordering_fields = ['id','prodType','field1','field2','field3','stock']
+    ordering_fields = ['id', 'prodType', 'field1', 'field2', 'field3', 'stock']
+
 
 class ProductTypeGenericView(generics.ListAPIView):
     """

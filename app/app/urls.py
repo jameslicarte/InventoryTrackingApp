@@ -2,15 +2,13 @@ from django.urls import include, path
 from rest_framework import routers
 from product import views
 from django.views.generic import TemplateView
+from django.contrib import admin
 
 router = routers.DefaultRouter()
 router.register(r'api/users', views.UserViewSet)
 router.register(r'api/groups', views.GroupViewSet)
 router.register(r'api/products', views.ProductViewSet)
 router.register(r'api/producttypes', views.ProductTypeViewSet)
-
-from django.contrib import admin
-from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
