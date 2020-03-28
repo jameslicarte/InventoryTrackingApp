@@ -158,8 +158,16 @@ export default {
                 'Content-Type': 'application/json'
               }
             })
-            .then(function (response) {
-              console.log(response);
+            .then(response => {
+              console.log(response)
+              let index = 0
+              this.products.forEach((datum,idx) => {
+                if (product.id == datum.id) {
+                  index = idx
+                }
+              })
+              console.log('indx', index)
+              this.products.splice(index,1)
             })
             .catch(function (error) {
               console.log(error);
@@ -188,14 +196,6 @@ export default {
     prompt_delete() {
       var del_button = confirm("Are you sure you want to delete this product?");
       this.events_data.del_button = del_button;
-    },
-    forceRerender(){
-      // this.$forceUpdate();
-      
-    },
-    forceRefreshPage(){
-      //not recommended, find way to rerender just table instead
-      location.reload()
     },
   },
   created() {
