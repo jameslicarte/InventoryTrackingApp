@@ -44,13 +44,13 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
             my_str = Product.product_name.replace(" ", "")
             fields += my_str[:3] + "-"
         if(Product.field1 != ''):
-            my_str =  Product.field1.replace(" ", "")
+            my_str = Product.field1.replace(" ", "")
             fields += my_str[:3] + "-"
         if(Product.field2 != ''):
-            my_str =  Product.field2.replace(" ", "")
+            my_str = Product.field2.replace(" ", "")
             fields += my_str[:3] + "-"
         if(Product.field3 != ''):
-            my_str =  Product.field3.replace(" ", "")
+            my_str = Product.field3.replace(" ", "")
             fields += my_str[:3] + "-"
      
         return fields
