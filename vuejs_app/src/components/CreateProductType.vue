@@ -43,7 +43,7 @@
           </div> 
         </b-col>
         <b-col>
-          <ListProductType></ListProductType>
+          <ListProductType :key="componentKey"></ListProductType>
         </b-col>
       </b-row>
     </b-container>
@@ -63,6 +63,7 @@ export default {
   },
   data() {
     return {
+      componentKey: 0,
       prodType: "",
       field1: "",
       field2: "",
@@ -88,7 +89,10 @@ export default {
       })
       .then(res => console.log(res), this.$forceUpdate)
       .catch(res => console.log(res.data))
-    }
+    },
+    forceUpdate(){
+      this.componentKey += 1  
+    },
   },
   created() {
     

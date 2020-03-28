@@ -93,7 +93,7 @@ export default {
       })
       .then(res => {
         console.log(res)
-        this.componentKey += 1  
+        this.forceUpdate();
 
       })
       .catch(res => console.log(res.data))
@@ -130,6 +130,9 @@ export default {
       else{
         this.field3_type="text";
       }
+    },
+    forceUpdate(){
+      this.componentKey += 1  
     },
   },
   created() {
