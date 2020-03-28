@@ -29,7 +29,7 @@
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label" for="field3">Field3 Name</label>
                     <div class="col-sm-8">
-                      <input class="form-control" type="text" name="field3" id="field3" v-model="field3" placeholder="Ex: Style">>
+                      <input class="form-control" type="text" name="field3" id="field3" v-model="field3" placeholder="Ex: Style">
                     </div>
                   </div>
                   <div class="form-group row">
