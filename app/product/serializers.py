@@ -34,18 +34,24 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
 
     def get_sku(self, Product):
         fields = ""
-        if(Product.id != ''):
-            fields += str(Product.id).replace(" ", "") + '/'
+        # if(Product.id != ''):
+        #     my_str = str(Product.id).replace(" ", "")
+        #     fields += my_str[:3] + "-"
         if(Product.prodType != ''):
-            fields += Product.prodType.replace(" ", "") + '/'
+            my_str = Product.prodType.replace(" ", "")
+            fields += my_str[:3] + "-"
         if(Product.product_name != ''):
-            fields += Product.product_name.replace(" ", "") + '/'
+            my_str = Product.product_name.replace(" ", "")
+            fields += my_str[:3] + "-"
         if(Product.field1 != ''):
-            fields += Product.field1.replace(" ", "") + '/'
+            my_str =  Product.field1.replace(" ", "")
+            fields += my_str[:3] + "-"
         if(Product.field2 != ''):
-            fields += Product.field2.replace(" ", "") + '/'
+            my_str =  Product.field2.replace(" ", "")
+            fields += my_str[:3] + "-"
         if(Product.field3 != ''):
-            fields += Product.field3.replace(" ", "") + '/'
+            my_str =  Product.field3.replace(" ", "")
+            fields += my_str[:3] + "-"
      
         return fields
 
