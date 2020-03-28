@@ -32,7 +32,7 @@
                       <input class="form-control" type="text" name="field3" id="field3" v-model="field3" placeholder="Ex: Style">
                     </div>
                   </div>
-                  <div class="form-group row">
+                  <div class="form-group">
                     <input class="ml-2" type="submit" value="Submit">
                   </div>
                 </form>
