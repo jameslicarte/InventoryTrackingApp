@@ -21,6 +21,8 @@ services:
     build: ./vuejs_app
     ports:
       - 80:8080
+    volumes:
+      - ./vuejs_app/src:/app/src
   db:
     image: postgres:12-alpine
     environment:

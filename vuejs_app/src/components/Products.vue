@@ -20,9 +20,9 @@
           <td>{{product.sku}}</td>
           <td>{{product.stock}}</td>
           <td>
-            <b-button variant="primary" v-on:click="promptAmount_receive(); putProduct_receive(product); forceRefreshPage()">Receive</b-button>
-            <b-button variant="primary" v-on:click="promptAmount_send(); putProduct_ship(product); forceRefreshPage();" style="margin-left: 10px;" >Send</b-button>
-            <b-button variant="danger" v-on:click="prompt_delete(); deleteProduct(product); forceRefreshPage();" style="margin-left: 10px;">Delete</b-button>
+            <b-button variant="primary" v-on:click="promptAmount_receive(); putProduct_receive(product);">Receive</b-button>
+            <b-button variant="primary" v-on:click="promptAmount_send(); putProduct_ship(product);" style="margin-left: 10px;" >Send</b-button>
+            <b-button variant="danger" v-on:click="prompt_delete(); deleteProduct(product);" style="margin-left: 10px;">Delete</b-button>
           </td>
         </tr>
       </tbody>
@@ -48,12 +48,12 @@ export default {
         {id:'7', field: 'Stock', db_field: 'stock'},
         {id:'8', field: 'Action'},
       ],
-      events_data: []
+      events_data: [],
     }
   },
   methods: {
     getProducts() {
-      axios.get("/api/filtered-products/?ordering=-stock")
+      axios.get("http://127.0.0.1:8000/api/filtered-products/?ordering=-stock")
       .then(res => (this.products = res.data))
       .catch(err => console.log(err));
     },
@@ -84,7 +84,7 @@ export default {
         new_orderType = '-'
       }
 
-      axios.get("/api/filtered-products/?ordering="+this.events_data.old_orderType+new_dbfield)
+      axios.get("http://127.0.0.1:8000/api/filtered-products/?ordering="+this.events_data.old_orderType+new_dbfield)
       .then(res => (this.products = res.data))
       .catch(err => console.log(err));
       console.log("--------Seperator---------")
@@ -93,17 +93,25 @@ export default {
       this.events_data.old_orderType = new_orderType;
     },
     putProduct_receive(product) {
-      var total_amount = product.stock + this.events_data.amount_receive;
-      axios.patch("/api/products/"+product.id+"/", {
+      var total_amount = product.stock + this.events_data.amount_receive
+      console.log('selected_product',product)
+      axios.patch("http://127.0.0.1:8000/api/products/"+product.id+"/", {
           stock: total_amount,
         },{
           headers: {
             'Content-Type': 'application/json'
           }
         })
-        .then(function (response) {
+        .then(response => {
           console.log(response)
-          
+          let index = 0
+          this.products.forEach((datum,idx) => {
+            if (product.id == datum.id) {
+              index = idx
+            }
+          })
+          console.log('indx', index)
+          this.products[index].stock = total_amount
         })
         .catch(function (error) {
           console.log(error);
@@ -116,16 +124,25 @@ export default {
         alert("ERROR: Stock cannot be less than 0");
       }
       else{
-        var total_amount = product.stock - this.events_data.amount_ship;
-        axios.patch("/api/products/"+product.id+"/", {
+        var total_amount = product.stock - this.events_data.amount_ship
+        // var product_id = product.id
+        axios.patch("http://127.0.0.1:8000/api/products/"+product.id+"/", {
             stock: total_amount,
           },{
             headers: {
               'Content-Type': 'application/json'
             }
           })
-          .then(function (response) {
-            console.log(response, this.events_data.amount_ship);
+          .then(response =>  {
+            console.log(response)
+            let index = 0
+            this.products.forEach((datum,idx) => {
+              if (product.id == datum.id) {
+                index = idx
+              }
+            })
+            console.log('indx', index)
+            this.products[index].stock = total_amount
           })
           .catch(function (error) {
             console.log(error);
@@ -136,7 +153,7 @@ export default {
       // Check if del_button is true, check if stock is not less than 0
       if(this.events_data.del_button){
         if(product.stock <= 0){
-          axios.delete("/api/products/"+product.id+"/", {},{
+          axios.delete("http://127.0.0.1:8000/api/products/"+product.id+"/", {},{
               headers: {
                 'Content-Type': 'application/json'
               }
