@@ -10,9 +10,9 @@
       <b-nav-item>
         <router-link tag="li" to="/create/prodtype">Create Product Type</router-link>
       </b-nav-item>
-      <b-nav-item>
+      <!-- <b-nav-item>
         <router-link tag="li" to="/reports">Reports</router-link>
-      </b-nav-item>
+      </b-nav-item> -->
     </b-nav>
     <router-view :key="$route.fullPath"></router-view>
   </div>
