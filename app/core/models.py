@@ -1,7 +1,6 @@
 from django.db import models
 from datetime import datetime   
-USE_TZ=True
-TIME_ZONE = 'Asia/Shanghai'
+
 
 
 class Product(models.Model):
@@ -14,7 +13,6 @@ class Product(models.Model):
     field3 = models.CharField(max_length=255, blank=True)
     field3_lbl = models.CharField(max_length=3, blank=True)
     stock = models.IntegerField(default='0')
-    updated_date = models.DateTimeField(default=datetime.now, blank=True)
 
     def __str__(self):
         return self.product_name
